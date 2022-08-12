@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { AiFillEye, AiFillGithub } from 'react-icons/ai';
 import { motion } from 'framer-motion';
+import { isMobile } from 'react-device-detect';
 
 import { AppWrap, MotionWrap } from '../../wrapper';
 import './Projects.scss';
@@ -55,28 +56,40 @@ const Projects = () => {
         className="app__work-portfolio"
       >
         {works.map((work, index) => (
-          <div className="app__work-item app__flex" key={index}>
+          <div className="app__work-item app__flex" key={index} style={isMobile ? {boxShadow: '0 0 25px var(--secondary-color)'} : null}>
             <div className="app__work-img app__flex">
               <img src={`assets/${work.imgSrc}.png`} alt={work.name} />
-              <motion.div whileHover={{ opacity: [0, 1] }} transition={{ duration: 0.25, ease: 'easeInOut', staggerChildren: 0.5 }} className="app__work-hover app__flex">
-                <a href={work.sitelink} target="_blank" rel="noreferrer">
-                  <motion.div whileInView={{ scale: [0, 1] }} whileHover={{ scale: [1, 0.90] }} transition={{ duration: 0.25 }} className="app__flex">
-                    <AiFillEye />
-                  </motion.div>
-                </a>
-                <a href={work.gitlink} target="_blank" rel="noreferrer">
-                  <motion.div whileInView={{ scale: [0, 1] }} whileHover={{ scale: [1, 0.90] }} transition={{ duration: 0.25 }} className="app__flex">
-                    <AiFillGithub />
-                  </motion.div>
-                </a>
-              </motion.div>
+              {!isMobile &&  
+                <motion.div whileHover={{ opacity: [0, 1] }} transition={{ duration: 0.25, ease: 'easeInOut', staggerChildren: 0.5 }} className="app__work-hover app__flex">
+                  <a href={work.sitelink} target="_blank" rel="noreferrer">
+                    <motion.div whileInView={{ scale: [0, 1] }} whileHover={{ scale: [1, 0.90] }} transition={{ duration: 0.25 }} className="app__flex">
+                      <AiFillEye />
+                    </motion.div>
+                  </a>
+                  <a href={work.gitlink} target="_blank" rel="noreferrer">
+                    <motion.div whileInView={{ scale: [0, 1] }} whileHover={{ scale: [1, 0.90] }} transition={{ duration: 0.25 }} className="app__flex">
+                      <AiFillGithub />
+                    </motion.div>
+                  </a>
+                </motion.div>
+              }
             </div>
             <div className="app__work-content app__flex">
               <h4 className="bold-text">{work.title}</h4>
-                  <p className="p-text" style={{ marginTop: 10 }}>{work.description}</p>
-                <div className="app__work-tag app__flex">
-                  <p className="p-text">{work.tags[0]}</p>
+                <p className="p-text" style={{ marginTop: 10 }}>{work.description}</p>
+              <div className="app__work-tag app__flex">
+                <p className="p-text">{work.tags[0]}</p>
+              </div>
+              {isMobile && 
+                <div style={{marginTop: '10px', display:'flex', justifyContent: 'space-around', width: '100%'}}>
+                  <a href={work.sitelink} target="_blank" rel="noreferrer" style={{height: '25px'}}>
+                    <AiFillEye size={25} color='#313bac'/>
+                  </a>
+                  <a href={work.gitlink} target="_blank" rel="noreferrer" style={{height: '25px'}}>
+                    <AiFillGithub size={25} color='#313bac'/>
+                  </a>
                 </div>
+              }
             </div>
           </div>
         ))}
