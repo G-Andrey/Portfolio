@@ -3,7 +3,6 @@ import { HiMenuAlt4, HiX } from 'react-icons/hi';
 import { FaGithubSquare, FaLinkedin } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
-// import { images } from '../../constants';
 import './Navbar.scss';
 
 const Navbar = () => {
