@@ -2,7 +2,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 import { AppWrap } from '../../wrapper';
-import { images } from '../../constants';
 import './About.scss';
 
 const scaleVariants = {
@@ -44,11 +43,11 @@ const About = () => (
       transition={{ duration: 0.5, delayChildren: 0.5 }}
       className="app__header-img"
     >
-      <img src={images.andreyProfile} alt="profile_bg" />
+      <img src={'assets/andreyProfile.png'} alt="profile_bg" />
       <motion.img
         whileInView={{ scale: [0, 1] }}
         transition={{ duration: 1, ease: 'easeInOut' }}
-        src={images.circle}
+        src={'assets/circle.svg'}
         alt="profile_circle"
         className="overlay_circle"
       />
@@ -58,12 +57,16 @@ const About = () => (
       variants={scaleVariants}
       whileInView={scaleVariants.whileInView}
       className="app__header-circles"
-    >
-      {[images.javascript, images.python, images.java].map((circle, index) => (
-        <div className="circle-cmp app__flex" key={`circle-${index}`}>
-          <img src={circle} alt="profile_bg" />
-        </div>
-      ))}
+    > 
+      <div className="circle-cmp app__flex">
+        <img src={'assets/javascript.png'} alt="profile_bg" />
+      </div>
+      <div className="circle-cmp app__flex">
+        <img src={'assets/python.png'} alt="profile_bg" />
+      </div>
+      <div className="circle-cmp app__flex">
+        <img src={'assets/java.png'} alt="profile_bg" />
+      </div>
     </motion.div>
   </div>
 );

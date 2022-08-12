@@ -3,7 +3,7 @@ import { HiMenuAlt4, HiX } from 'react-icons/hi';
 import { FaGithubSquare, FaLinkedin } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
-import { images } from '../../constants';
+// import { images } from '../../constants';
 import './Navbar.scss';
 
 const Navbar = () => {
@@ -11,8 +11,8 @@ const Navbar = () => {
 
   return (
     <nav className="app__navbar">
-      <a className="app__navbar-logo" href="/#about">
-        <img src={images.andreyLogo} alt="logo"/>
+      <a className="app__navbar-logo" href="#about">
+        <img src={'assets/andreyLogo.png'} alt="logo"/>
       </a>
       <ul className="app__navbar-links">
         {['about', 'projects', 'skills', 'resume'].map((item) => (

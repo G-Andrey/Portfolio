@@ -46,7 +46,7 @@ const Skills = () => {
             {cards.map((card) => (
               <motion.div whileInView={{ opacity: [0, 1] }} transition={{ duration: 0.4 }} className="app__skills-item app__flex" key={card.name}>
                 <div className="app__flex" style={{backgroundColor: '#fff'}}>
-                  <img src={require(`assets/${card.src}.png`)} alt={card.name} />
+                  <img src={`assets/${card.src}.png`} alt={card.name} />
                 </div>
                 <p className="p-text">{card.name}</p>
               </motion.div>
